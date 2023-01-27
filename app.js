@@ -25,6 +25,9 @@ function flipCard() {
     //hasFlippedCard = false;
      //3: Vi kallar funktionen här
     checkForMatch();
+    //När vi har kollat av våran match och gjort det som ska göras...
+    //Då anropar vi increment(); och uppdaterar antalet gissningar..
+    increment();
 }
 
 //3: Vi checkar om korten matchar här
@@ -73,5 +76,21 @@ function resetBoard() {
         card.style.order = randomPos;
     });
 })();
+
+/**
+ * Vi håller reda på antalet drag = gissningar...
+ */
+let count = 1;
+function increment() {
+    if (count === 1) {
+        document.querySelector("#counter").innerHTML =
+        "Du har gissat <br />" + count + " gång.";
+    } else {
+        document.querySelector("#counter").innerHTML =
+        "Du har gissat <br />" + count + " gånger.";
+    }
+    count++;
+}
+
 
 cards.forEach(card => card.addEventListener('click', flipCard));
